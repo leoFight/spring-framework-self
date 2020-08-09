@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework'
+version '5.2.0.RELEASE'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/javax.annotation/javax.annotation-api
+    compile group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    compile(project(":spring-context"))
+    compile(project(":spring-jdbc"))
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.6'
+    // https://mvnrepository.com/artifact/org.mybatis/mybatis-spring
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.5'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+}
