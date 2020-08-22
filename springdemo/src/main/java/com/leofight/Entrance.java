@@ -1,6 +1,7 @@
 package com.leofight;
 
 import com.leofight.controller.WelcomeController;
+import com.leofight.entity.User;
 import com.leofight.service.WelcomeService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -33,5 +34,8 @@ public class Entrance {
 		}
 		WelcomeController welcomeController = (WelcomeController) context.getBean("welcomeController");
 		welcomeController.handleRequest();
+
+		User user5 = (User) context.getBean("user5");
+		System.out.println(user5);
 	}
 }
