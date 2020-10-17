@@ -3,7 +3,7 @@ package com.leofight;
 import com.leofight.controller.HelloController;
 import com.leofight.controller.HiController;
 import com.leofight.controller.WelcomeController;
-import com.leofight.entity.User;
+import com.leofight.selftag.User;
 import com.leofight.service.HelloService;
 import com.leofight.service.HiService;
 import com.leofight.service.WelcomeService;
@@ -23,13 +23,15 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 @EnableAspectJAutoProxy
 @ComponentScan("com.leofight")
 public class Entrance {
-	public static void main1(String[] args) {
+	public static void main(String[] args) {
 		System.out.println("Hello World!");
 
 		String xmlPath = "/spring/spring-config.xml";
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext(xmlPath);
-		WelcomeService welcomeService = (WelcomeService) applicationContext.getBean("welcomeService");
-		welcomeService.sayHello("强大的Spring框架");
+		//WelcomeService welcomeService = (WelcomeService) applicationContext.getBean("welcomeService");
+		//welcomeService.sayHello("强大的Spring框架");
+		User user = (User) applicationContext.getBean("my");
+		System.out.println(user.getUsername());
 	}
 
 	public static void main2(String[] args) {
@@ -45,7 +47,7 @@ public class Entrance {
 		System.out.println(user5);
 	}
 
-	public static void main(String[] args) {
+	public static void main3(String[] args) {
 		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Entrance.class);
 		HiController hiController = (HiController)applicationContext.getBean("hiController");
 		hiController.handleRequest();

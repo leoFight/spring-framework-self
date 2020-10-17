@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.my.com/schema/user"
+			xmlns:tns="http://www.my.com/schema/user"
+			elementFormDefault="qualified">
+	<element name="user">
+		<complexType>
+			<attribute name="id" type ="string"/>
+			<attribute name="userName" type ="string"/>
+			<attribute name="email" type ="string"/>
+			<attribute name="password" type ="string"/>
+		</complexType>
+	</element>
+
+
+</schema>

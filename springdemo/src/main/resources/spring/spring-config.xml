@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:my="http://www.my.com/schema/user"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.my.com/schema/user http://www.my.com/schema/user.xsd">
 	<bean id = "welcomeService" class="com.leofight.service.impl.WelcomeServiceImpl"/>
+	<my:user id="my" email="test@.com" password="123" userName="ccc"/>
 </beans>
