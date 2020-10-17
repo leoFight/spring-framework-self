@@ -250,6 +250,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * 创建一个没有父元素的新的AbstractApplicationContext
 	 */
 	public AbstractApplicationContext() {
+		//创建资源模式处理器
 		this.resourcePatternResolver = getResourcePatternResolver();
 	}
 
@@ -465,6 +466,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * @see org.springframework.core.io.support.PathMatchingResourcePatternResolver
 	 */
 	protected ResourcePatternResolver getResourcePatternResolver() {
+		//创建一个资源模式解析器(其实就是用来解析XML配置文件）
 		return new PathMatchingResourcePatternResolver(this);
 	}
 
@@ -531,11 +533,20 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// 给容器refresh加锁，避免容器处在refresh阶段时，容器进行了初始化或者销毁的操作
 		synchronized (this.startupShutdownMonitor) {
 			// 调用容器准备刷新的方法，获取容器的当时时间，同时给容器设置同步标识，具体方法
+			/**
+			 * 做容器刷新前的准备工作：
+			 * 1、设置容器的启动时间
+			 * 2、设置活跃状态为true
+			 * 3、设置关闭状态为false
+			 * 4、获取Environment对象，并加载当前系统的属性值到Environment对象中
+			 * 5、准备监听器和时间的集合对象，默认为空的集合
+			 */
 			prepareRefresh();
 
 			//告诉子类启动refreshBeanFactory()方法，Bean定义资源文件的载入从
 			//子类的refreshBeanFactory()方法启动，里面有抽象方法
 			//针对xml配置，最终创建内部容器，该容器负责 Bean 的创建与管理，此步会进行BeanDefinition的注册
+			//创建容器对象：DefaultListableBeanFactory
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// 注册一些容器中需要的系统Bean.例如classloader，beanfactoryPostProcessor等

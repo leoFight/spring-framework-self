@@ -128,8 +128,9 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			closeBeanFactory();
 		}
 		try {
-			//创建容器
+			//创建DefaultListableBeanFactory对象
 			DefaultListableBeanFactory beanFactory = createBeanFactory();
+			//为了序列化指定id，可以从id反序列化到beanFactory对象
 			beanFactory.setSerializationId(getId());
 			//对容器进行定制化，默认主要设置是否允许BeanDefinition的重复注册，
 			// Bean之间是否允许循环引用等，此外还可以设置启动参数，开启注解的自动装配等
